@@ -1,7 +1,7 @@
 # DytanVO: Joint Refinement of Visual Odometry and Motion Segmentation in Dynamic Environments
 
 <p align="center">
-    <a href="https://www.icra2023.org/"><img src="https://img.shields.io/badge/ICRA-2023-yellow"></a>
+    <a href="https://www.icra2023.org/"><img src="https://img.shields.io/badge/ICRA-2023-yellow?logo=ieee"></a>
     <a href="https://arxiv.org/abs/2209.08430"><img src="https://img.shields.io/badge/arXiv-2209.08430-b31b1b"></a>
     <a href="https://youtu.be/6yO7RsZjSBQ"><img src="https://img.shields.io/badge/Video-Demo-critical?logo=youtube"></a>
     <a href="https://github.com/castacks/DytanVO/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg"></a>
