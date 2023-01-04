@@ -1,7 +1,7 @@
 # DytanVO: Joint Refinement of Visual Odometry and Motion Segmentation in Dynamic Environments
 
 <p align="center">
-    <a href="https://www.icra2023.org/"><img src="https://img.shields.io/badge/ICRA-2023-red"></a>
+    <a href="https://www.icra2023.org/"><img src="https://img.shields.io/badge/ICRA-2023-yellow"></a>
     <a href="https://arxiv.org/abs/2209.08430"><img src="https://img.shields.io/badge/arXiv-2209.08430-b31b1b"></a>
     <a href="https://youtu.be/6yO7RsZjSBQ"><img src="https://img.shields.io/badge/Video-Demo-critical?logo=youtube"></a>
     <a href="https://github.com/castacks/DytanVO/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg"></a>
@@ -27,7 +27,7 @@
 DytanVO is a learning-based visual odometry (VO) based on its precursor, [TartanVO](https://github.com/castacks/tartanvo). It is the first supervised learning-based VO method that deals with dynamic environments. It takes two consecutive monocular frames in real-time and predicts camera ego-motion in an iterative fashion. It achieves an average improvement of 27.7% over state-of-the-art VO solutions in real-world dynamic environments, and even performs competitively among dynamic visual SLAM systems which optimize the trajectory on the backend. Experiments on plentiful unseen environments also demonstrate its generalizability.
 
 ## Installation
-We provide an environment file using [anaconda](https://www.anaconda.com/). The code has been tested on an RTX 2080 Ti with CUDA 11.4.
+We provide an environment file using [anaconda](https://www.anaconda.com/). The code has been tested on an RTX 2080Ti with CUDA 11.4.
 ```bash
 conda env create -f environment.yaml
 conda activate dytanvo
