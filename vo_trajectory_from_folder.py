@@ -118,6 +118,8 @@ if __name__ == '__main__':
     # calculate ATE, RPE, KITTI-RPE
     if args.pose_file.endswith('.txt'):
         gtposes = np.loadtxt(args.pose_file)
+        if datastr == 'airdos':
+            gtposes = gtposes[:,1:]  # remove the first column of timestamps
         gtmotions = pose_quats2motion_ses(gtposes)
         estmotion_scale = per_frame_scale_alignment(gtmotions, motions)
         estposes = motion_ses2pose_quats(estmotion_scale)

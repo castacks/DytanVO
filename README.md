@@ -23,8 +23,10 @@
 
 - 05-15-2022: Release codebase for _Dynamic Dense RGB-D SLAM with Learning-Based Visual Odometry_.
 
+
 ## Introduction
 DytanVO is a learning-based visual odometry (VO) based on its precursor, [TartanVO](https://github.com/castacks/tartanvo). It is the first supervised learning-based VO method that deals with dynamic environments. It takes two consecutive monocular frames in real-time and predicts camera ego-motion in an iterative fashion. It achieves an average improvement of 27.7% over state-of-the-art VO solutions in real-world dynamic environments, and even performs competitively among dynamic visual SLAM systems which optimize the trajectory on the backend. Experiments on plentiful unseen environments also demonstrate its generalizability.
+
 
 ## Installation
 We provide an environment file using [anaconda](https://www.anaconda.com/). The code has been tested on an RTX 2080Ti with CUDA 11.4.
@@ -38,11 +40,47 @@ Compile [DCNv2](https://github.com/MatthewHowe/DCNv2).
 cd Network/rigidmask/networks/DCNv2/; python setup.py install; cd -
 ```
 
+
 ## Models and Data
-Coming soon
+```bash
+mkdir models
+mkdir data
+```
+### Pretrained weights
+TODO
+
+### KITTI Dynamic Sequences
+TODO
+
+### AirDOS-Shibuya
+Follow [tartanair-shibuya](https://github.com/haleqiu/tartanair-shibuya) and download it into `data`.
+
+Alternatively, you can create symbolic links to wherever the datasets were downloaded in the `data` folder.
+
+```Shell
+├── data
+    ├── AirDOS_shibuya
+        ├── RoadCrossing03
+			├── image_0
+			├── ...
+			├── gt_pose.txt
+        ├── RoadCrossing04
+		├── ...
+    ├── DynaKITTI
+        ├── 00_1
+			├── image_2
+			├── ...
+			├── pose_left.txt
+			├── calib.txt
+        ├── 01_0
+        ├── ...
+    ├── ...
+```
+
+
 
 ## Evaluation
-Run inference on dynamic sequences in KITTI (loading the finetuned VO model at once)
+### Dynamic sequences in KITTI (loading the finetuned VO model at once)
 ```bash
 traj=00_1
 python -W ignore::UserWarning vo_trajectory_from_folder.py --vo-model-name vonet_ft.pkl  \
@@ -52,7 +90,7 @@ python -W ignore::UserWarning vo_trajectory_from_folder.py --vo-model-name vonet
 							   --pose-file data/DynaKITTI/$traj/pose_left.txt 
 ```
 
-Run inference on AirDOS-Shibuya (loading FlowNet and PoseNet separately)
+### AirDOS-Shibuya (loading FlowNet and PoseNet separately)
 ```bash
 traj=RoadCrossing03
 python -W ignore::UserWarning vo_trajectory_from_folder.py --flow-model-name flownet.pkl  \
@@ -60,7 +98,7 @@ python -W ignore::UserWarning vo_trajectory_from_folder.py --flow-model-name flo
 							   --seg-model segnet-sf.pth  \
 							   --airdos  \
 							   --test-dir data/AirDOS_shibuya/$traj/image_0  \
-							   --pose-file data/AirDOS_shibuya/$traj/gt_pose_quats.txt 
+							   --pose-file data/AirDOS_shibuya/$traj/gt_pose.txt 
 ```
 
 Running the above commands with the `--save-flow` tag, allows you to save intermediate optical flow outputs into the `results` folder.
