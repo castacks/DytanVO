@@ -17,7 +17,7 @@
 
 ### What's new.
 
-- 01-04-2023: Clean up and upload the codebase for DytanVO. Pretrained models and datasets are coming soon.
+- 01-05-2023: Clean up and upload the codebase for _DytanVO_. Pretrained weights and datasets are also ready.
 
 - 09-20-2022: Archive _Dynamic Dense RGB-D SLAM with Learning-Based Visual Odometry_, please check out the [legacy branch](https://github.com/Geniussh/DytanVO/tree/archived). The repo will be used to release codebase for the most recent ICRA 2023 submission.
 
@@ -47,10 +47,10 @@ cd Network/rigidmask/networks/DCNv2/; python setup.py install; cd -
 Download [here](https://drive.google.com/file/d/1ujYmKv5FHXYe1KETabTnSs-R2OE0KJV3/view?usp=share_link) and unzip it to the `models` folder. 
 
 ### KITTI dynamic sequences
-TODO
+Original sequences in [KITTI Odometry](https://www.cvlibs.net/datasets/kitti/eval_odometry.php) are trimmed into sub-sequences which contain moving pedestrians, vehicles and cyclists so that VO's robustness to dynamic objects can be explicitly evaluated. Download [DynaKITTI](https://drive.google.com/file/d/1BDnraRWzNf938UsfprWIkcqCSfOUyGt9/view?usp=share_link) and unzip it to the `data` folder. Please cite this paper if it is used in any future work. 
 
 ### AirDOS-Shibuya
-Follow [tartanair-shibuya](https://github.com/haleqiu/tartanair-shibuya) and download it into `data`.
+Follow [tartanair-shibuya](https://github.com/haleqiu/tartanair-shibuya) and download it to the `data` folder.
 
 ### (Optional) Scene Flow
 One can also test the model on [Scene Flow datasets](https://lmb.informatik.uni-freiburg.de/resources/datasets/SceneFlowDatasets.en.html), which was used to train both the VO and the segmentation networks. Scene Flow datasets have very challenging sequences with large areas of dynamic objects in image frames. 
