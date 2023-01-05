@@ -46,7 +46,7 @@ cd Network/rigidmask/networks/DCNv2/; python setup.py install; cd -
 ### Pretrained weights
 Download [here](https://drive.google.com/file/d/1ujYmKv5FHXYe1KETabTnSs-R2OE0KJV3/view?usp=share_link) and unzip it to the `models` folder. 
 
-### KITTI Dynamic Sequences
+### KITTI dynamic sequences
 TODO
 
 ### AirDOS-Shibuya
@@ -61,28 +61,28 @@ You can create symbolic links to wherever the datasets were downloaded in the `d
 ├── data
     ├── AirDOS_shibuya
         ├── RoadCrossing03
-			├── image_0
-			├── ...
-			├── gt_pose.txt
+            ├── image_0
+            ├── ...
+            ├── gt_pose.txt
         ├── RoadCrossing04
-		├── ...
+        ├── ...
     ├── DynaKITTI
         ├── 00_1
-			├── image_2
-			├── ...
-			├── pose_left.txt
-			├── calib.txt
+            ├── image_2
+            ├── ...
+            ├── pose_left.txt
+            ├── calib.txt
         ├── 01_0
         ├── ...
     ├── SceneFlow
-		├── FlyThings3D
-			├── frames_cleanpass
-			├── frames_finalpass
-			├── optical_flow
-			├── camera_data
-		├── Driving
-		├── Monkaa
-	├── ...
+        ├── FlyThings3D
+            ├── frames_cleanpass
+            ├── frames_finalpass
+            ├── optical_flow
+            ├── camera_data
+        ├── Driving
+        ├── Monkaa
+    ├── ...
 ```
 
 
