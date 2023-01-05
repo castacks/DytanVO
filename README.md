@@ -42,12 +42,9 @@ cd Network/rigidmask/networks/DCNv2/; python setup.py install; cd -
 
 
 ## Models and Data
-```bash
-mkdir models
-mkdir data
-```
+
 ### Pretrained weights
-TODO
+Download [here](https://drive.google.com/file/d/1ujYmKv5FHXYe1KETabTnSs-R2OE0KJV3/view?usp=share_link) and unzip it to the `models` folder. 
 
 ### KITTI Dynamic Sequences
 TODO
@@ -55,7 +52,10 @@ TODO
 ### AirDOS-Shibuya
 Follow [tartanair-shibuya](https://github.com/haleqiu/tartanair-shibuya) and download it into `data`.
 
-Alternatively, you can create symbolic links to wherever the datasets were downloaded in the `data` folder.
+### (Optional) Scene Flow
+One can also test the model on [Scene Flow datasets](https://lmb.informatik.uni-freiburg.de/resources/datasets/SceneFlowDatasets.en.html), which was used to train both the VO and the segmentation networks. Scene Flow datasets have very challenging sequences with large areas of dynamic objects in image frames. 
+
+You can create symbolic links to wherever the datasets were downloaded in the `data` folder.
 
 ```Shell
 ├── data
@@ -74,9 +74,16 @@ Alternatively, you can create symbolic links to wherever the datasets were downl
 			├── calib.txt
         ├── 01_0
         ├── ...
-    ├── ...
+    ├── SceneFlow
+		├── FlyThings3D
+			├── frames_cleanpass
+			├── frames_finalpass
+			├── optical_flow
+			├── camera_data
+		├── Driving
+		├── Monkaa
+	├── ...
 ```
-
 
 
 ## Evaluation
@@ -101,8 +108,19 @@ python -W ignore::UserWarning vo_trajectory_from_folder.py --flow-model-name flo
 							   --pose-file data/AirDOS_shibuya/$traj/gt_pose.txt 
 ```
 
-Running the above commands with the `--save-flow` tag, allows you to save intermediate optical flow outputs into the `results` folder.
+### Scene Flow
+```bash
+img=Driving/frames_finalpass/15mm_focallength/scene_forwards/fast/left
+pose=Driving/camera_data/15mm_focallength/scene_forwards/fast/camera_data.txt
+python -W ignore::UserWarning vo_trajectory_from_folder.py --flow-model-name flownet.pkl  \
+							   --pose-model-name posenet.pkl  \
+							   --seg-model segnet-sf.pth  \
+							   --sceneflow  \
+							   --test-dir data/SceneFlow/$img  \
+							   --pose-file data/SceneFlow/$pose
+```
 
+Add `--save-flow` tag to save intermediate optical flow outputs into the `results` folder.
 
 Adjust the batch size and the worker number by `--batch-size 10`, `--worker-num 5`. 
 

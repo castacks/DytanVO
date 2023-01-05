@@ -16,6 +16,7 @@ import numbers
 import cv2
 import matplotlib.pyplot as plt
 import os
+from scipy.spatial.transform import Rotation as R
 
 if ( not ( "DISPLAY" in os.environ ) ):
     plt.switch_backend('agg')
@@ -247,7 +248,7 @@ def visflow(flownp, maxF=500.0, n=8, mask=None, hueMax=179, angShift=0.0):
     return bgr
 
 
-def dataset_intrinsics(dataset='tartanair'):
+def dataset_intrinsics(dataset='tartanair', is_15mm=False):
     if dataset == 'kitti':
         focalx, focaly, centerx, centery = 707.0912, 707.0912, 601.8873, 183.1104
         baseline = None  # to be determined using load_kitti_intrinsics
@@ -259,6 +260,8 @@ def dataset_intrinsics(dataset='tartanair'):
         baseline = 0.05
     elif dataset == 'sceneflow':
         focalx, focaly, centerx, centery = 1050.0, 1050.0, 479.5, 269.5
+        if is_15mm:
+            focalx = focaly = 450.0
         baseline = 0.5
     elif dataset == 'tartanair':
         focalx, focaly, centerx, centery = 320.0, 320.0, 320.0, 240.0
@@ -316,3 +319,36 @@ def load_kiiti_intrinsics(filename):
     baseline = P2[0,3] / P2[0,0] - P3[0,3] / P3[0,0]
 
     return focalx, focaly, centerx, centery, baseline
+
+def load_sceneflow_extrinsics(filename):
+    with open(filename, 'r') as f:
+        lines = f.readlines()
+
+    l_exts = []
+    r_exts = []
+    for l in lines:
+        if 'L ' in l:
+            l_exts.append(np.asarray([float(i) for i in l[2:].strip().split(' ')]).reshape(4,4))
+        if 'R ' in l:
+            r_exts.append(np.asarray([float(i) for i in l[2:].strip().split(' ')]).reshape(4,4))
+
+    if 'into_future' in filename:
+        fids = np.arange(0, len(l_exts))
+    else:
+        fids = np.arange(len(l_exts) - 1, -1, -1)
+    
+    # assuming left camera is used by default
+    camT = np.eye(4); camT[1,1] = -1; camT[2,2] = -1  # Sceneflow uses Blender's coordinate system
+    pose_quats = []
+    pose = np.eye(4)
+    for fid in fids:
+        ext0 = l_exts[fid]
+        ext1 = l_exts[fid+1] if 'into_future' in filename else l_exts[fid-1]
+        motion = camT.dot(np.linalg.inv(ext0)).dot(ext1).dot(camT)  # ext is from camera space to world space
+        pose = pose @ motion
+        pose_quat = np.zeros(7)
+        pose_quat[3:] = R.from_matrix(pose[:3,:3]).as_quat()
+        pose_quat[:3] = pose[:3,3]
+        pose_quats.append(pose_quat)
+    
+    return pose_quats

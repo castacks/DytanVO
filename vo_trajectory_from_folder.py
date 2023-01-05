@@ -1,5 +1,6 @@
 from torch.utils.data import DataLoader
-from Datasets.utils import ToTensor, Compose, CropCenter, ResizeData, dataset_intrinsics, DownscaleFlow, plot_traj, visflow, load_kiiti_intrinsics
+from Datasets.utils import ToTensor, Compose, CropCenter, ResizeData, dataset_intrinsics, DownscaleFlow, 
+from Datasets.utils import plot_traj, visflow, load_kiiti_intrinsics, load_sceneflow_extrinsics
 from Datasets.tartanTrajFlowDataset import TrajFolderDataset
 from evaluator.transformation import pose_quats2motion_ses, motion_ses2pose_quats
 from evaluator.tartanair_evaluator import TartanAirEvaluator
@@ -74,7 +75,7 @@ if __name__ == '__main__':
         datastr = 'sceneflow'
     else:
         datastr = 'tartanair'
-    focalx, focaly, centerx, centery, baseline = dataset_intrinsics(datastr) 
+    focalx, focaly, centerx, centery, baseline = dataset_intrinsics(datastr, '15mm' in args.test_dir) 
     if args.kitti_intrinsics_file.endswith('.txt') and datastr == 'kitti':
         focalx, focaly, centerx, centery, baseline = load_kiiti_intrinsics(args.kitti_intrinsics_file)
 
@@ -117,9 +118,13 @@ if __name__ == '__main__':
 
     # calculate ATE, RPE, KITTI-RPE
     if args.pose_file.endswith('.txt'):
-        gtposes = np.loadtxt(args.pose_file)
-        if datastr == 'airdos':
-            gtposes = gtposes[:,1:]  # remove the first column of timestamps
+        if datastr == 'sceneflow':
+            gtposes = load_sceneflow_extrinsics(args.pose_file)
+        else:
+            gtposes = np.loadtxt(args.pose_file)
+            if datastr == 'airdos':
+                gtposes = gtposes[:,1:]  # remove the first column of timestamps
+        
         gtmotions = pose_quats2motion_ses(gtposes)
         estmotion_scale = per_frame_scale_alignment(gtmotions, motions)
         estposes = motion_ses2pose_quats(estmotion_scale)
