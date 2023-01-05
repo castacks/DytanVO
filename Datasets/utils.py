@@ -1,3 +1,12 @@
+"""
+# ==============================
+# utils.py
+# misc library for DytanVO
+# Author: Wenshan Wang, Shihao Shen
+# Date: 3rd Jan 2023
+# ==============================
+"""
+
 from __future__ import division
 import torch
 import math

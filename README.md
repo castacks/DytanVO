@@ -107,6 +107,16 @@ Running the above commands with the `--save-flow` tag, allows you to save interm
 Adjust the batch size and the worker number by `--batch-size 10`, `--worker-num 5`. 
 
 
+## (Optional) Segmentation Mask Ground Truth
+If your dataset has ground truth for camera motion, optical flow and disparity change across consecutive frames, we provide an example script to automatically generate ground truth of segmentation mask given these two modalities based on the pure geometry for the [Scene Flow datasets](https://lmb.informatik.uni-freiburg.de/resources/datasets/SceneFlowDatasets.en.html). 
+
+```bash
+python Datasets/segmask_gt.py --database data/SceneFlow --frames_pass clean --dataset FlyingThings3D
+```
+
+Add `--debug` flag to save visualizations of the generated masks.
+
+
 ## Acknowledgement
 We built DytanVO on top of [TartanVO](https://github.com/castacks/tartanvo). We implemented the segmentation network by adapting [rigidmask](https://github.com/gengshan-y/rigidmask). We thank [Gengshan Yang](https://gengshan-y.github.io/) for his code and suggestions. 
 

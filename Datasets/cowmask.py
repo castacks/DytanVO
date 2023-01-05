@@ -19,6 +19,8 @@ Cow mask generation.
 https://github.com/google-research/google-research/blob/master/milking_cowmask/
 Adapted from LAX implementation to NumPy due to PyTorch dataloader 
 being incompatible with JAX
+Author: Shihao Shen
+Date: 29th Aug 2022
 """
 import math
 import numpy as np

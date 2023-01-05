@@ -1,3 +1,11 @@
+"""
+# ==============================
+# tartanTrajFlowDataset.py
+# library for DytanVO data I/O
+# Author: Wenshan Wang, Shihao Shen
+# Date: 3rd Jan 2023
+# ==============================
+"""
 import numpy as np
 import cv2
 from torch.utils.data import Dataset, DataLoader
