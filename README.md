@@ -47,7 +47,7 @@ cd Network/rigidmask/networks/DCNv2/; python setup.py install; cd -
 Download [here](https://drive.google.com/file/d/1ujYmKv5FHXYe1KETabTnSs-R2OE0KJV3/view?usp=share_link) and unzip it to the `models` folder. 
 
 ### KITTI dynamic sequences
-Original sequences in [KITTI Odometry](https://www.cvlibs.net/datasets/kitti/eval_odometry.php) are trimmed into sub-sequences which contain moving pedestrians, vehicles and cyclists so that VO's robustness to dynamic objects can be explicitly evaluated. Download [DynaKITTI](https://drive.google.com/file/d/1BDnraRWzNf938UsfprWIkcqCSfOUyGt9/view?usp=share_link) and unzip it to the `data` folder. Please cite this paper if it is used in any future work. 
+Original sequences in [KITTI Odometry](https://www.cvlibs.net/datasets/kitti/eval_odometry.php) are trimmed into sub-sequences which contain moving pedestrians, vehicles and cyclists so that VO's robustness to dynamic objects can be explicitly evaluated. Download [DynaKITTI](https://drive.google.com/file/d/1BDnraRWzNf938UsfprWIkcqCSfOUyGt9/view?usp=share_link) and unzip it to the `data` folder. Please cite this paper if you find it useful in your work. 
 
 ### AirDOS-Shibuya
 Follow [tartanair-shibuya](https://github.com/haleqiu/tartanair-shibuya) and download it to the `data` folder.
@@ -134,6 +134,16 @@ python Datasets/segmask_gt.py --database data/SceneFlow --frames_pass clean --da
 
 Add `--debug` flag to save visualizations of the generated masks.
 
+## Citation
+If you find our code, paper or dataset useful, please cite
+```bibtex
+@article{shen2022dytanvo,
+  title={DytanVO: Joint Refinement of Visual Odometry and Motion Segmentation in Dynamic Environments},
+  author={Shen, Shihao and Cai, Yilin and Wang, Wenshan and Scherer, Sebastian},
+  journal={arXiv preprint arXiv:2209.08430},
+  year={2022}
+}
+```
 
 ## Acknowledgement
 We built DytanVO on top of [TartanVO](https://github.com/castacks/tartanvo). We implemented the segmentation network by adapting [rigidmask](https://github.com/gengshan-y/rigidmask). We thank [Gengshan Yang](https://gengshan-y.github.io/) for his code and suggestions. 
