@@ -266,6 +266,9 @@ def dataset_intrinsics(dataset='tartanair', is_15mm=False):
     elif dataset == 'tartanair':
         focalx, focaly, centerx, centery = 320.0, 320.0, 320.0, 240.0
         baseline = 1
+    elif dataset == 'commaai':
+        focalx, focaly, centerx, centery = 910.0, 910.0, 582.0, 437.0
+        baseline = 1
     else:
         return None
     return focalx, focaly, centerx, centery, baseline

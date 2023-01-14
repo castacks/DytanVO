@@ -1,6 +1,6 @@
 # Software License Agreement (BSD License)
 #
-# Copyright (c) 2020, Shihao Shen, Wenshan Wang, Yaoyu Hu,  CMU
+# Copyright (c) 2020, Wenshan Wang, Yaoyu Hu,  CMU
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without

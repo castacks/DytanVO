@@ -1,6 +1,6 @@
 # Software License Agreement (BSD License)
 #
-# Copyright (c) 2020, Shihao Shen, Wenshan Wang,  CMU
+# Copyright (c) 2020, Shihao Shen, CMU
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -152,7 +152,6 @@ class DytanVO(object):
             total_time = 0
             start_time = time.time()
             flow_output, _ = self.vonet([img0, img1], only_flow=True)
-            flow_output = flow_output[0].detach().clone()
             flownet_time = time.time() - start_time
             total_time += flownet_time
 
@@ -180,7 +179,7 @@ class DytanVO(object):
                 if iter == iter_num - 1:
                     break
 
-                seg_thresh = seg_thresholds[iter] if iter < iter_num - 1 else seg_thresh
+                seg_thresh = seg_thresholds[iter] if iter < iter_num-1 else seg_thresh
                 pose_input = pose_output.data.cpu().detach().numpy().squeeze()
                 pose_input = pose_input * self.pose_norm
                 pose_input = self.camT.T.dot(se2SE(pose_input)).dot(self.camT)

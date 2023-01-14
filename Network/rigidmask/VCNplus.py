@@ -1,8 +1,3 @@
-"""
-Adapted from "Learning to Segment Rigid Motions from Two Frames"
-https://github.com/gengshan-y/rigidmask
-"""
-
 import torch
 import torch.nn as nn
 import torch.nn.functional as F

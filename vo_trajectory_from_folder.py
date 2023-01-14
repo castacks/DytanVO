@@ -1,5 +1,5 @@
 from torch.utils.data import DataLoader
-from Datasets.utils import ToTensor, Compose, CropCenter, ResizeData, dataset_intrinsics, DownscaleFlow, 
+from Datasets.utils import ToTensor, Compose, CropCenter, ResizeData, dataset_intrinsics, DownscaleFlow
 from Datasets.utils import plot_traj, visflow, load_kiiti_intrinsics, load_sceneflow_extrinsics
 from Datasets.tartanTrajFlowDataset import TrajFolderDataset
 from evaluator.transformation import pose_quats2motion_ses, motion_ses2pose_quats
@@ -40,6 +40,8 @@ def get_args():
                         help='sceneflow test (default: False)')
     parser.add_argument('--kitti', action='store_true', default=False,
                         help='kitti test (default: False)')
+    parser.add_argument('--commaai', action='store_true', default=False,
+                        help='commaai test (default: False)')
     parser.add_argument('--kitti-intrinsics-file',  default='',
                         help='kitti intrinsics file calib.txt (default: )')
     parser.add_argument('--test-dir', default='',
@@ -73,6 +75,8 @@ if __name__ == '__main__':
         datastr = 'rs_d435'
     elif args.sceneflow:
         datastr = 'sceneflow'
+    elif args.commaai:
+        datastr = 'commaai'
     else:
         datastr = 'tartanair'
     focalx, focaly, centerx, centery, baseline = dataset_intrinsics(datastr, '15mm' in args.test_dir) 
@@ -91,7 +95,7 @@ if __name__ == '__main__':
     testDataiter = iter(testDataloader)
 
     motionlist = []
-    testname = datastr + '_' + args.vo_model_name.split('.')[0]
+    testname = datastr + '_' + args.vo_model_name.split('.')[0] + '_' + args.test_dir.split('/')[-1]
     if args.save_flow:
         flowdir = 'results/'+testname+'_flow'
         if not isdir(flowdir):
