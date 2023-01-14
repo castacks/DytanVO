@@ -87,6 +87,11 @@ You can create symbolic links to wherever the datasets were downloaded in the `d
 
 
 ## Evaluation
+Create a folder to save output flow, segmentation, or poses. 
+```bash
+mkdir results
+```
+
 ### Dynamic sequences in KITTI (loading the finetuned VO model at once)
 ```bash
 traj=00_1
