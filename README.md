@@ -7,7 +7,7 @@
     <a href="https://github.com/castacks/DytanVO/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-BSD%203--Clause-blue.svg"></a>
 </p>
 <p align="center">
-	DytanVO: Joint Refinement of Visual Odometry and Motion Segmentation in Dynamic Environments (ICRA 2023 accepted)<br>
+	DytanVO: Joint Refinement of Visual Odometry and Motion Segmentation in Dynamic Environments (ICRA 2023)<br>
   By
   <a href="https://github.com/Geniussh/">Shihao Shen</a>, 
   <a href="http://missinglight.github.io/">Yilin Cai</a>, 
@@ -16,6 +16,8 @@
 </p>
 
 ### What's new.
+
+- 01-17-2023: Our paper has been accepted at ICRA 2023!
 
 - 01-05-2023: Clean up and upload the codebase for _DytanVO_. Pretrained weights and datasets are also ready.
 
