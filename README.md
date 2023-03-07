@@ -17,7 +17,7 @@
 
 ### What's new.
 
-- 01-17-2023: Our paper has been accepted at ICRA 2023!
+- 01-17-2023: Our paper has been accepted to ICRA 2023!
 
 - 01-05-2023: Clean up and upload the codebase for _DytanVO_. Pretrained weights and datasets are also ready.
 
