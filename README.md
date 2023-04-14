@@ -33,7 +33,7 @@ DytanVO is a learning-based visual odometry (VO) based on its precursor, [Tartan
 ## Installation
 We provide an environment file using [anaconda](https://www.anaconda.com/). The code has been tested on an RTX 2080Ti with CUDA 11.4.
 ```bash
-conda env create -f environment.yaml
+conda env create -f environment.yml
 conda activate dytanvo
 ```
 
