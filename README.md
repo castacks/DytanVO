@@ -21,9 +21,7 @@
 
 - 01-05-2023: Clean up and upload the codebase for _DytanVO_. Pretrained weights and datasets are also ready.
 
-- 09-20-2022: Archive _Dynamic Dense RGB-D SLAM with Learning-Based Visual Odometry_, please check out the [legacy branch](https://github.com/Geniussh/DytanVO/tree/archived). The repo will be used to release codebase for the most recent ICRA 2023 submission.
-
-- 05-15-2022: Release codebase for _Dynamic Dense RGB-D SLAM with Learning-Based Visual Odometry_.
+- 09-20-2022: Remove _Dynamic Dense RGB-D SLAM with Learning-Based Visual Odometry_. The repo will be used to release codebase for the most recent ICRA 2023 submission.
 
 
 ## Introduction
