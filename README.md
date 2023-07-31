@@ -142,11 +142,13 @@ Add `--debug` flag to save visualizations of the generated masks.
 ## Citation
 If you find our code, paper or dataset useful, please cite
 ```bibtex
-@article{shen2022dytanvo,
-  title={DytanVO: Joint Refinement of Visual Odometry and Motion Segmentation in Dynamic Environments},
+@inproceedings{shen2023dytanvo,
+  title={Dytanvo: Joint refinement of visual odometry and motion segmentation in dynamic environments},
   author={Shen, Shihao and Cai, Yilin and Wang, Wenshan and Scherer, Sebastian},
-  journal={arXiv preprint arXiv:2209.08430},
-  year={2022}
+  booktitle={2023 IEEE International Conference on Robotics and Automation (ICRA)},
+  pages={4048--4055},
+  year={2023},
+  organization={IEEE}
 }
 ```
 
